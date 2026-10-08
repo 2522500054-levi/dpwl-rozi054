@@ -3,12 +3,17 @@ class Controller
 {
     public function __construct()
     {
-        $this->session = new session();
+        $this->session = new Session();
+
         $this->load = new class {
-            public function view($viewName, $data core = [])
+
+            public function view($viewName, $data = [])
             {
-                if (!empty($data)) extract($data);
-                include './view/' . $viewName . '.php'; core
+                if (!empty($data)) {
+                    extract($data);
+                }
+
+                include './view/' . $viewName . '.php';
             }
 
             public function model($modelName)
